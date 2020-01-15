@@ -55,8 +55,8 @@ public class BinarySearchTree {
 		
 
 		
-		// Check if the tree is empty
-//		System.out.println( "Node " + root.getData() + " is Empty? " + root.isEmpty());
+//		 Check if the tree is empty
+		System.out.println( "\nNode " + root.getData() + " is Empty? " + root.isEmpty());
 	}
 }
 	

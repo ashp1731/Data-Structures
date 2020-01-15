@@ -157,4 +157,18 @@ public class Node {
 			return lSize + rSize + 1;
 		}
 	}
+	
+	public boolean isEmpty() {
+		if(data == 0) {
+			return true;
+		}
+		else {
+			if (leftNode == null && rightNode == null) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+	}
 }
