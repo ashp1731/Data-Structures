@@ -69,7 +69,18 @@ public class Node {
 		} else {
 			return false;
 		}
+	}
 
+	public Node searchNode(int value) {
+		if (value == data) {
+			return this;
+		} else if (value > data && rightNode != null) {
+			return rightNode.searchNode(value);
+		} else if (value < data && leftNode != null) {
+			return leftNode.searchNode(value);
+		} else {
+			return null;
+		}
 	}
 
 	// LRN (Post Order)
@@ -95,30 +106,28 @@ public class Node {
 	}
 
 	public void clear(Node node) {
-		
-		if (leftNode != null) {
-			System.out.println("Deleting Node : " + leftNode.getData() );
-			clear(leftNode);
+		if (node.data == data) {
+			if (leftNode != null) {
+				System.out.println("Deleting Node : " + leftNode.getData() );
+				leftNode.clear(leftNode);
+				leftNode = null;
+			}
 			
-		}
-		else {
-			System.out.println("Deleting Node : " + node.getData() );
-			node = null;
-		}
-		
-		if(rightNode != null) {
-			System.out.println("Deleting Node : " + rightNode.getData() );
-			clear(rightNode);
-			
-		}else {
-			System.out.println("Deleting Node : " + node.getData() );
-			node = null;
+			if(rightNode != null) {
+				System.out.println("Deleting Node : " + rightNode.getData() );
+				rightNode.clear(rightNode);
+				rightNode = null;
+			}
+		} else if (rightNode != null && node.data > data) {
+			rightNode.clear(node);
+			if (rightNode.data == node.data)
+				rightNode = null;
+		} else if (leftNode != null && node.data < data) {
+			leftNode.clear(node);
+			if (leftNode.data == node.data)
+				leftNode = null;
 		}
 	}
-	
-		
-		
-	
 
 	public int getHeight() {
 		if (data == 0) {
