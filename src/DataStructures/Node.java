@@ -4,7 +4,7 @@ package DataStructures;
 public class Node {
 
 	private int data;
-	private Node leftNode, rightNode;
+	public Node leftNode, rightNode;
 
 	public int getData() {
 		return data;
@@ -35,29 +35,30 @@ public class Node {
 
 	public Node(int data) {
 		this.data = data;
+		leftNode = rightNode = null;
 	}
 
-	public void insert(int value) {
-		if (data != value) {
-			if (value > data) {
-				if (rightNode == null) {
-					rightNode = new Node(value);
-					System.out.println("Right Node " + value + " inserted");
-				} else {
-					rightNode.insert(value);
-				}
-			}
-
-			else if (value < data) {
-				if (leftNode == null) {
-					leftNode = new Node(value);
-					System.out.println("Left Node " + value + " inserted");
-				} else {
-					leftNode.insert(value);
-				}
-			}
-		}
-	}
+//	public void insert(int value) {
+//		if (data != value) {
+//			if (value > data) {
+//				if (rightNode == null) {
+//					rightNode = new Node(value);
+//					System.out.println("Right Node " + value + " inserted");
+//				} else {
+//					rightNode.insert(value);
+//				}
+//			}
+//
+//			else if (value < data) {
+//				if (leftNode == null) {
+//					leftNode = new Node(value);
+//					System.out.println("Left Node " + value + " inserted");
+//				} else {
+//					leftNode.insert(value);
+//				}
+//			}
+//		}
+//	}
 
 	public boolean search(int value) {
 		if (value == data) {

@@ -4,11 +4,31 @@ public class BinarySearchTree {
 
 	private Node root;
 	
-	public void insert(int data) {
-		if (root == null)
-			root = new Node (data);
-		else
-			root.insert(data);
+	
+	public Node getRoot() {
+		return root;
+	}
+
+	public void setRoot(Node root) {
+		this.root = root;
+	}
+
+	public static  Node insert(Node root, int value) {
+		
+		if(root == null) {
+			return new Node(value);
+		}
+		else {
+			if(value < root.getData()) {
+				root.leftNode = insert(root.leftNode, value);
+				System.out.println("inserting Left Node : " + value);
+			}
+			else {
+				root.rightNode = insert(root.rightNode, value);
+				System.out.println("Inserting Right Node : " + value);
+			}
+			return root;
+		}
 	}
 	
 	public void clear () {
@@ -28,18 +48,19 @@ public class BinarySearchTree {
 	
 	public static void main(String[]args) {
 		BinarySearchTree tree = new BinarySearchTree();
+		Node root = null;
 		
-		tree.insert(50);
-		tree.insert(40);
-		tree.insert(60);
-		tree.insert(45);
-		tree.insert(35);
-		tree.insert(20);
-		tree.insert(42);
-		tree.insert(90);
-		tree.insert(110);
-		tree.insert(100);
-		tree.insert(92);
+		int[] keys = {50,40,60,45,35,20,42,90,110,100,92,10};
+		
+		for(int key : keys){
+			root = insert(root, key);
+			if(tree.getRoot() == null)
+			tree.setRoot(root);
+			
+			tree.root.leftNode = root.leftNode;
+			tree.root.rightNode = root.rightNode;
+		}
+
 		
 		// Search Node
 		System.out.println(tree.search(100));
